@@ -1,4 +1,5 @@
 import { useAtom } from "jotai";
+import { useTranslation } from "react-i18next";
 import { cupsAtom, fullCupAtom, percentAtom, resetAtom } from "./store/atom";
 import {
   Cup,
@@ -17,7 +18,11 @@ function App() {
   const [percent] = useAtom(percentAtom);
   const [, setFullCups] = useAtom(fullCupAtom);
   const [, resetCups] = useAtom(resetAtom);
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language: string) => () => {
+    i18n.changeLanguage(language);
+  };
+  console.log(i18n.language);
   return (
     <Water>
       <h1>喝水统计</h1>
@@ -59,6 +64,13 @@ function App() {
         })}
       </Cups>
       <Reset onClick={resetCups}>重置</Reset>
+      <h2>{t("title")}</h2>
+      <p>{t("description.part1")}</p>
+      <p>{t("description.part2")}</p>
+      <p>{t("description2.part1")}</p>
+      <p>{t("description2.part2")}</p>
+      <button onClick={changeLanguage("en")}>English</button>
+      <button onClick={changeLanguage("zh")}>简体中文</button>
     </Water>
   );
 }
