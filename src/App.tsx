@@ -1,39 +1,65 @@
 import { useAtom } from "jotai";
-import { cupsAtom, fullCupAtom, resetAtom } from "./store/atom";
-import "./styles/style.css";
+import { cupsAtom, fullCupAtom, percentAtom, resetAtom } from "./store/atom";
+import {
+  Cup,
+  Cups,
+  CupSmall,
+  Percentage,
+  Remained,
+  Reset,
+  Small,
+  Span,
+  Water,
+} from "./styles/styled";
 
 function App() {
   const [cups] = useAtom(cupsAtom);
+  const [percent] = useAtom(percentAtom);
   const [, setFullCups] = useAtom(fullCupAtom);
   const [, resetCups] = useAtom(resetAtom);
+
   return (
-    <div className="water">
+    <Water>
       <h1>喝水统计</h1>
       <h3>目标：2L</h3>
-      <div className="cup">
-        <div className="remained" id="remained">
-          <span id="liters"></span>
-          <small>剩余2L</small>
-        </div>
-      </div>
+      <Cup>
+        <Remained
+          id="remained"
+          style={percent === 8 ? { height: "0px" } : { height: "auto" }}
+        >
+          <Span id="liters"></Span>
+          <Small>剩余{(2 * (100 - percent * 12.5)) / 100}L</Small>
+        </Remained>
+        <Percentage
+          id="percentage"
+          style={
+            percent === 0
+              ? { display: "none" }
+              : { height: `${percent * 32.5}px ` }
+          }
+        >
+          {percent * 12.5}%
+        </Percentage>
+      </Cup>
       <p className="text">选择你喝了几杯水</p>
-      <div className="cups">
+      <Cups>
         {cups.map((item) => {
+          const { id, isFull } = item;
           return (
-            <div
-              className={item.isFull ? "cup cup-small full" : "cup cup-small"}
-              key={item.id}
-              onClick={(e) => setFullCups(item.id)}
+            <CupSmall
+              isFull={isFull}
+              key={id}
+              onClick={(e) => {
+                setFullCups(id);
+              }}
             >
               250 ml
-            </div>
+            </CupSmall>
           );
         })}
-      </div>
-      <button className="reset" onClick={resetCups}>
-        重置
-      </button>
-    </div>
+      </Cups>
+      <Reset onClick={resetCups}>重置</Reset>
+    </Water>
   );
 }
 

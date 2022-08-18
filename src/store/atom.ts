@@ -1,11 +1,13 @@
 import { atom } from "jotai";
-
+//initial Atom
 export const cupsAtom = atom(
   Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
     isFull: false,
   }))
 );
+export const percentAtom = atom(0);
+// handleCup Atom
 export const fullCupAtom = atom(
   (get) => get(cupsAtom),
   (get, set, itemId: number) => {
@@ -23,6 +25,16 @@ export const fullCupAtom = atom(
 
       return [...newCups];
     });
+    set(percentAtom, () => {
+      let newPercent = get(percentAtom);
+      const newCups = get(cupsAtom);
+      if (!newCups[itemId - 1].isFull) {
+        newPercent = itemId - 1;
+      } else if (newCups[itemId - 1].isFull) {
+        newPercent = itemId;
+      }
+      return newPercent;
+    });
   }
 );
 
@@ -34,5 +46,6 @@ export const resetAtom = atom(
       newCups.forEach((i) => (i.isFull = false));
       return [...newCups];
     });
+    set(percentAtom, 0);
   }
 );
