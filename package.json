@@ -13,6 +13,7 @@
     "i18next": "^21.9.1",
     "i18next-browser-languagedetector": "^6.1.5",
     "i18next-http-backend": "^1.4.1",
+    "i18next-scanner": "^4.0.0",
     "i18next-xhr-backend": "^3.2.2",
     "jotai": "^1.7.8",
     "react": "^18.2.0",
@@ -52,6 +53,7 @@
     "styled-components": "^5"
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "i18next-parser": "^6.5.0"
   }
 }

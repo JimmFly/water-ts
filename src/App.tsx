@@ -25,8 +25,8 @@ function App() {
   console.log(i18n.language);
   return (
     <Water>
-      <h1>喝水统计</h1>
-      <h3>目标：2L</h3>
+      <h1>{t("喝水统计")}</h1>
+      <h3>{t("目标：2L")}</h3>
       <Cup>
         <Remained
           id="remained"
@@ -69,6 +69,7 @@ function App() {
       <p>{t("description.part2")}</p>
       <p>{t("description2.part1")}</p>
       <p>{t("description2.part2")}</p>
+      <p>{t("description2.partgg")}</p>
       <button onClick={changeLanguage("en")}>English</button>
       <button onClick={changeLanguage("zh")}>简体中文</button>
     </Water>
