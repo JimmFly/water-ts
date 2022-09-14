@@ -33,7 +33,10 @@ function App() {
           style={percent === 8 ? { height: "0px" } : { height: "auto" }}
         >
           <Span id="liters"></Span>
-          <Small>剩余{(2 * (100 - percent * 12.5)) / 100}L</Small>
+          <Small>
+            {t("剩余")}
+            {(2 * (100 - percent * 12.5)) / 100}L
+          </Small>
         </Remained>
         <Percentage
           id="percentage"
@@ -46,7 +49,7 @@ function App() {
           {percent * 12.5}%
         </Percentage>
       </Cup>
-      <p className="text">选择你喝了几杯水</p>
+      <p className="text">{t("选择你喝了几杯水")}</p>
       <Cups>
         {cups.map((item) => {
           const { id, isFull } = item;
@@ -63,13 +66,7 @@ function App() {
           );
         })}
       </Cups>
-      <Reset onClick={resetCups}>重置</Reset>
-      <h2>{t("title")}</h2>
-      <p>{t("description.part1")}</p>
-      <p>{t("description.part2")}</p>
-      <p>{t("description2.part1")}</p>
-      <p>{t("description2.part2")}</p>
-      <p>{t("description2.partgg")}</p>
+      <Reset onClick={resetCups}>{t("重置")}</Reset>
       <button onClick={changeLanguage("en")}>English</button>
       <button onClick={changeLanguage("zh")}>简体中文</button>
     </Water>

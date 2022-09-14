@@ -8,7 +8,7 @@ module.exports = {
     "!**/i18n/**",
     "!**/node_modules/**",
   ],
-  output: "./dist",
+  output: "./",
   options: {
     debug: true,
     func: {
@@ -16,13 +16,13 @@ module.exports = {
       extensions: [".ts", ".tsx"],
     },
     lngs: ["en", "zh"],
-    ns: ["en", "zh"],
-    defaultLng: "en",
-    defaultNs: "en",
+    ns: ["translation"],
+    defaultLng: "zh",
+    defaultNs: "translation",
     defaultValue: "__STRING_NOT_TRANSLATED__",
     resource: {
-      loadPath: "./src/i18n/resource/{{ns}}.json",
-      savePath: "i18n/resource/{{ns}}.json",
+      loadPath: "public/locales/{{lng}}/{{ns}}.json",
+      savePath: "public/locales/{{lng}}/{{ns}}.json",
       jsonIndent: 2,
       lineEnding: "\n",
     },

@@ -1,9 +1,7 @@
 {
-    "喝水统计": "_shishi",
-    "目标：2L": "__kankan__",
-    "title": "__STweishenmeTED__",
-    "description.part1": "wozaishishi",
-    "description.part2": "zheci1yidxing",
-    "description2.part1": "__zheci1yidxing__",
-    "description2.part2": "__zheci1yidxing__"
-  }
+  "喝水统计": "Drink Water",
+  "目标：2L": "Goal: 2 Liters",
+  "剩余": "Remained",
+  "选择你喝了几杯水": "Select how many glasses of water that you have drank",
+  "重置": "reset"
+}
