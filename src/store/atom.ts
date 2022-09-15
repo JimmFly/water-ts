@@ -1,12 +1,14 @@
 import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 //initial Atom
-export const cupsAtom = atom(
+export const cupsAtom = atomWithStorage(
+  "cups",
   Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
     isFull: false,
   }))
 );
-export const percentAtom = atom(0);
+export const percentAtom = atomWithStorage("percent", 0);
 // handleCup Atom
 export const fullCupAtom = atom(
   (get) => get(cupsAtom),
