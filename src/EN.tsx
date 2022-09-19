@@ -13,7 +13,7 @@ import {
   Water,
 } from "./styles/styled";
 
-function ZH() {
+function EN() {
   const [cups] = useAtom(cupsAtom);
   const [percent] = useAtom(percentAtom);
   const [, setFullCups] = useAtom(fullCupAtom);
@@ -23,10 +23,6 @@ function ZH() {
     i18n.changeLanguage(language);
   };
   console.log(i18n.language);
-  // const { lang } = useParams();
-  // useEffect(() => {
-  //   i18n.changeLanguage(lang);
-  // }, [i18n, lang]);
   return (
     <Water>
       <h1>{t("喝水统计")}</h1>
@@ -73,8 +69,10 @@ function ZH() {
       <Reset onClick={resetCups}>{t("重置")}</Reset>
       <button onClick={changeLanguage("en")}>English</button>
       <button onClick={changeLanguage("zh")}>简体中文</button>
+      <button onClick={changeLanguage("zh")}>简体中文</button>
+      <button onClick={changeLanguage("zh")}>简体中文</button>
     </Water>
   );
 }
 
-export default ZH;
+export default EN;
